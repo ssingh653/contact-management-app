@@ -2,14 +2,12 @@ const express = require("express");
 const app = express();
 const PORT = 4000;
 const cors = require("cors");
-const cookieParser = require("cookie-parser");
 const connectDB = require("./config/dbConn");
 const Contacts = require("./model/Contacts");
 
 connectDB();
 
 app.use(express.json());
-app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
