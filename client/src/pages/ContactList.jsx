@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as XLSX from "xlsx";
 import SortByDropdown from "../components/SortByDropdown";
 
