@@ -1,16 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import * as XLSX from "xlsx";
 import SortByDropdown from "../components/SortByDropdown";
 
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
-
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
-  const [sortCriteria, setSortCriteria] = useState("default");
   const [sortedContacts, setSortedContacts] = useState([...contacts]);
 
   const sortingOptions = [
@@ -57,13 +54,12 @@ const ContactList = () => {
     if (window.confirm(text) === true) {
       await axios.delete("/contacts/" + id);
       // alert("Contact deleted successfully");
-      window.location.reload();
+      return <Navigate to="/" />;
     }
   }
 
   const handleSortChange = (option) => {
-    console.log("option value", option.value);
-    setSortCriteria(option.value);
+    // console.log("option value", option.value);
     let sortedItems = [...sortedContacts];
     if (option.value === "nameAsc") {
       sortedItems.sort((a, b) => a.name.localeCompare(b.name));
