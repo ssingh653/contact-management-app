@@ -54,7 +54,7 @@ const ContactList = () => {
     if (window.confirm(text) === true) {
       await axios.delete("/contacts/" + id);
       // alert("Contact deleted successfully");
-      return <Navigate to="/" />;
+      window.location.reload();
     }
   }
 
